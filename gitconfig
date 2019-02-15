@@ -11,7 +11,7 @@
 
 [core]
   pager = less -FRSX
-	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
+	editor = code --wait
 
 [alias]
   co = checkout
@@ -23,15 +23,8 @@
   dt  = difftool
   stat = !git --no-pager diff --stat
 
-  # Clean merged branches
-  sweep = !git branch --merged master | grep -v 'master$' | xargs git branch -d && git remote prune origin
-
   # http://www.jukie.net/bart/blog/pimping-out-git-log
   lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
-
-  # Serve local repo. http://coderwall.com/p/eybtga
-  # Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
-  serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 
   m = checkout master
 
@@ -41,11 +34,6 @@
 [help]
   autocorrect = 1
 
-[push]
-	default = simple
-
-[branch "master"]
-  mergeoptions = --no-edit
 [user]
 	email = nickpetzold@gmail.com
 	name = Nick Petzold
